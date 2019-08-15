@@ -1,6 +1,7 @@
 <template>
   <div id="app">
-    <fromEmail msg="Welcome to Your Vue.js App" />
+    <fromEmail :config="inputConfig1" />
+    <fromEmail :config="inputConfig2" />
   </div>
 </template>
 
@@ -11,6 +12,17 @@ export default {
   name: "app",
   components: {
     fromEmail
+  },
+  data() {
+    return {
+      inputConfig1: {
+        mode: "login-username",
+        value:"pruebitaNomas"
+      },
+      inputConfig2: {
+        mode: "login-pwd"
+      }
+    };
   }
 };
 </script>
