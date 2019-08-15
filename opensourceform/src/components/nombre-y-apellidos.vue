@@ -23,11 +23,15 @@ export default {
     "user.nombre" () {
        if ( typeof this.user.nombre != "string" || this.user.nombre === "" ) {
          return this.user.invalid = true
+        } else{
+          return this.user.invalid = false
         }
       },
     "user.apellido" () {
        if ( typeof this.user.apellido != "string" || this.user.apellido === "" ) {
          return this.user.invalid2 = true
+        } else{
+          return this.user.invalid2 = false
         }
     }
   }
