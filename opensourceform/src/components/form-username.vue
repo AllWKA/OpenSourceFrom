@@ -30,10 +30,23 @@ export default {
 
   methods : {
     checkUsername(){
-      this.checkWords(this.words);
-      if (this.username.length <= 1 || this.username.length > 20) {
+
+      if (!this.checkLength()) {
         this.error = "El username es demasiado corto";
-        return;
+      }else{
+        this.error = '';
+      }
+      if (!this.checkWords(this.words)) {
+        this.error = "El Username no es válido";
+      }
+      
+    },
+    checkLength() {
+      
+      if (this.username.length <= 1 || this.username.length > 20) {
+        return false;
+      }else{
+        return true;
       }
     },
     checkLetters(letters) {
@@ -41,8 +54,7 @@ export default {
       arrayLettersUsername.forEach(letritaUser => {
         letters.forEach(letrita =>{
           if (letritaUser == letrita) {
-            this.error = "El Username tiene una letra no valida";
-            return;
+            return false;
           }
         })
       });
@@ -50,10 +62,9 @@ export default {
     checkWords(words) {
       
       if (words.indexOf(this.username) == -1) {
-        this.error='';
-        this.error = "El UsernamePalabreja es válido";
+        return true;
       }else{
-        this.error = "El Username no es válido";
+        return false;
       }
     }
   }
